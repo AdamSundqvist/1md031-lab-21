@@ -87,22 +87,72 @@
                 Content
             </section>
             <section id="contact">
+                <h4>
+                    Delivery information
+                </h4>
                 <form>
-                    <fieldset>
-                        <p>
-                            <label for="firstname">First</label><br>
-                            <input type="text" id="firstname" name="fn" required="required" placeholder="First name">
-                        </p>
-                        <p>
-                            <label for="lastname">Last</label><br>
-                            <input type="text" id="lastname" name="ln" placeholder="Last name">
-                        </p>
-                        <p>
-                            <input type="email" id="email" name="em" required="required" placeholder="E-mail address">
-                        </p>
-                    </fieldset>
-                </form>
+
+                    <p>
+                        <label for="Full name">Full name</label><br>
+                        <input type="text" id="Full name" name="fn" required="required"
+                            placeholder="First and Last name">
+                    </p>
+                    <p>
+                        <label for="E-mail">Email</label><br>
+                        <input type="email" id="Email" name="em" placeholder="Enter your email">
+                    </p>
+                    <p>
+                        <label for="Street name">Street</label><br>
+                        <input type="adress" id="email" name="adress" required="required" placeholder="Street name">
+                    </p>
+                    <p>
+                        <label for="House number">House</label><br>
+                        <input type="number" id="number" name="number" required="required" placeholder="House number">
+                    </p>
+
             </section>
+            <p>
+            <h4>
+                Payment method
+            </h4>
+            <be>
+                <select id="Payment" name="Payment">
+                    <option>Visa/Mastercard</option>
+                    <option>Klarna checkout</option>
+                    <option>Swish</option>
+                    <option>PayPal</option>
+                    <option selected="selected">Send cash with mail-pidgeon</option>
+                </select>
+            </be>
+            </p>
+            <h4>
+                Gender
+            </h4>
+            <div>
+                <input type="radio" id="undisclosured" name="gender" value="undisclosured" checked>
+                <label for="Undisclosured">Undisclosured</label>
+            </div>
+            <div>
+                <input type="radio" id="Female" name="gender" value="Female">
+                <label for="Female">Female</label>
+            </div>
+            <div>
+                <input type="radio" id="Male" name="gender" value="Male">
+                <label for="Male">Male</label>
+            </div>
+            <div>
+                <input type="radio" id="Non-binary" name="gender" value="Non-binary">
+                <label for="Non-binary">Non-binary</label>
+            </div>
+            </form>
+            <h4>
+                Submit
+            </h4>
+            <button type="submit">
+                <img src="https://lh3.googleusercontent.com/rNHRk7L8O0TFs8pwWrJokFzr3qWNReIuWvWNznFB2BzAW6q3qR9ita2uIbeTLlJjzttGmqM=s85"
+                    height="25px" width=auto>
+                Place order
+            </button>
         </div>
     </main>
     <hr>
