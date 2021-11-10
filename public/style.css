@@ -1,6 +1,46 @@
-.burgersection {
+#Header {
+    padding: 100px;
+    background-image: url(https://debaser.se/wp-content/themes/debaser/img/food/barbrooklyn2019/02.jpg);
+    background-position: 50%;
+    text-align: center;
+    font-size: 2em;
+    font-family: fantasy;
+    -webkit-text-fill-color: darkslateblue; /* Will override color (regardless of order) */
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: white;
+    margin-bottom: 5px;
     
 }
-.customerinfo {
-    
+
+#burgersection {
+    color: white;
+    background-color: black;
+    overflow: auto;
+    border: dashed;
+    margin-bottom: 5px;
+    padding: 5px;
+}
+
+#customerinfosection {
+    border: dashed;
+}
+
+.submitbutton {
+    font-size: 20px;
+    padding: 10px 15px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: #fff;
+    background-color: #04AA6D;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+}
+.submitbutton:hover {background-color: #3e8e41}
+
+.submitbutton:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
 }
