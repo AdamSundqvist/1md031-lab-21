@@ -21,6 +21,25 @@
     padding: 5px;
 }
 
+.wrapper {
+    display: grid;
+     grid-gap: 10px;
+     color: white;
+     background-color: black;
+}
+
+.burgerOne {
+    grid-column: 1 ;
+}
+
+.burgerTwo {
+    grid-column: 2 ;
+}
+
+.burgerThree {
+    grid-column: 3 ;
+}
+
 #customerinfosection {
     border: dashed;
 }
@@ -36,6 +55,8 @@
     border: none;
     border-radius: 15px;
     box-shadow: 0 9px #999;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 .submitbutton:hover {background-color: #3e8e41}
 
@@ -44,3 +65,9 @@
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
+
+#contact {
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
