@@ -16,6 +16,24 @@ import io from 'socket.io-client'
 
 const socket = io();
 
+//object contructor menuItem goes here
+function menuItem(name, imgURL, kCal,gluten,lactose) {
+  this.name = name;
+  this.image = imgURL;
+  this.calories = kCal;
+  this.gluten = gluten;
+  this.lactose = lactose;
+}
+
+const burgerarray [];
+burgerarray[0] = new menuItem("Original Tasty","https://www.foodrepublic.com/wp-content/uploads/2012/03/033_FR11785-700x466.jpg"
+,500,true,true);
+burgerarray[1] = new menuItem("El Fuego","https://www.nrn.com/sites/nrn.com/files/styles/article_featured_retina/public/uploads/2014/10/et-burgerdiablopromo_0.jpg?itok=hYC7WpGi"
+,600,true,true);
+burgerarray[2] = new menuItem("The GreenPeace","https://www.thespruceeats.com/thmb/KAgMssHoQUmx30uuYL_FTahXA0A=/2048x1360/filters:fill(auto,1)/vegan-mushroom-bean-burger-recipe-3378623-13_preview1-5b241897fa6bcc0036d2c9bf.jpeg"
+,400,false,false);
+
+
 export default {
   name: 'Home',
   components: {
