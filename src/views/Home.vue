@@ -6,8 +6,8 @@
     <section id="burgersection">
       <h3>Burger selection</h3>
       <p>This will be the burger selection area</p>
-      <div class="wrapper">
-        <div class="burgerOne">
+      <div id="wrapper">
+        <div id="burgerOne">
           <h4>Original Tasty</h4>
           <img
             src="https://www.foodrepublic.com/wp-content/uploads/2012/03/033_FR11785-700x466.jpg"
@@ -26,7 +26,7 @@
             <li>Pickles</li>
           </ul>
         </div>
-        <div class="burgerTwo">
+        <div id="burgerTwo">
           <h4>El Fuego</h4>
           <img
             src="https://www.nrn.com/sites/nrn.com/files/styles/article_featured_retina/public/uploads/2014/10/et-burgerdiablopromo_0.jpg?itok=hYC7WpGi"
@@ -45,7 +45,7 @@
             <li>Caramellized onions</li>
           </ul>
         </div>
-        <div class="burgerThree">
+        <div id="burgerThree">
           <h4>The GreenPeace</h4>
           <img
             src="https://www.thespruceeats.com/thmb/KAgMssHoQUmx30uuYL_FTahXA0A=/2048x1360/filters:fill(auto,1)/vegan-mushroom-bean-burger-recipe-3378623-13_preview1-5b241897fa6bcc0036d2c9bf.jpeg"
@@ -165,13 +165,13 @@
   </footer>
   <div>
     Burgers
-    <Burger v-for="burger in burgerArray"
-            v-bind:burger="burger" 
-            v-bind:key="burger.name"/>
+    <Burger
+      v-for="burger in burgerArray"
+      v-bind:burger="burger"
+      v-bind:key="burger.name"
+    />
   </div>
-  <div id="map" v-on:click="addOrder">
-    click here
-  </div>
+  <div id="map" v-on:click="addOrder">click here</div>
 </template>
 
 <script>
@@ -230,68 +230,66 @@ export default {
 </script>
 
 <style>
-
 #Header {
-    padding: 100px;
-    background-image: url(https://debaser.se/wp-content/themes/debaser/img/food/barbrooklyn2019/02.jpg);
-    background-position: 50%;
-    text-align: center;
-    font-size: 2em;
-    font-family: fantasy;
-    -webkit-text-fill-color: darkslateblue; /* Will override color (regardless of order) */
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: white;
-    margin-bottom: 5px;
-    
+  padding: 100px;
+  background-image: url(https://debaser.se/wp-content/themes/debaser/img/food/barbrooklyn2019/02.jpg);
+  background-position: 50%;
+  text-align: center;
+  font-size: 2em;
+  font-family: fantasy;
+  -webkit-text-fill-color: darkslateblue; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: white;
+  margin-bottom: 5px;
 }
 
 #burgersection {
-    color: white;
-    background-color: black;
-    overflow: auto;
-    border: dashed;
-    margin-bottom: 5px;
-    padding: 5px;
+  color: white;
+  background-color: black;
+  overflow: auto;
+  border: dashed;
+  margin-bottom: 5px;
+  padding: 5px;
 }
 
-.wrapper {
-    display: grid;
-     grid-gap: 10px;
-     color: white;
-     background-color: black;
+#wrapper {
+  display: grid;
+  grid-gap: 10px;
 }
 
-.burgerOne {
-    grid-column: 1 ;
+#burgerOne {
+  grid-column: 1;
 }
 
-.burgerTwo {
-    grid-column: 2 ;
+#burgerTwo {
+  grid-column: 2;
 }
 
-.burgerThree {
-    grid-column: 3 ;
+#burgerThree {
+  grid-column: 3;
 }
 
 #customerinfosection {
-    border: dashed;
+  border: dashed;
 }
 
 .submitbutton {
-    font-size: 20px;
-    padding: 10px 15px;
-    text-align: center;
-    cursor: pointer;
-    outline: none;
-    color: #fff;
-    background-color: #04AA6D;
-    border: none;
-    border-radius: 15px;
-    box-shadow: 0 9px #999;
-    margin-bottom: 10px;
-    margin-top: 10px;
+  font-size: 20px;
+  padding: 10px 15px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #04aa6d;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
-.submitbutton:hover {background-color: #3e8e41}
+.submitbutton:hover {
+  background-color: #3e8e41;
+}
 
 .submitbutton:active {
   background-color: #3e8e41;
@@ -300,8 +298,8 @@ export default {
 }
 
 #contact {
-    margin-left: 10px;
-    margin-bottom: 10px;
+  margin-left: 10px;
+  margin-bottom: 10px;
 }
 
 #map {
