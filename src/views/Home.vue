@@ -23,29 +23,32 @@
         <input
           type="text"
           id="Full name"
-          name="fn"
+          v-model="fullName"
           required="required"
           placeholder="First and Last name"
         />
+        {{fullName}}
       </p>
       <p>
         <label for="E-mail">Email</label><br />
         <input
           type="email"
           id="Email"
-          name="em"
+          v-model="email"
           placeholder="Enter your email"
         />
+        {{email}}
       </p>
       <p>
         <label for="Street name">Street</label><br />
         <input
           type="adress"
-          id="email"
-          name="adress"
+          id="adress"
+          v-model="streetName"
           required="required"
           placeholder="Street name"
         />
+        {{streetName}}
       </p>
       <p>
         <label for="House number">House</label><br />
@@ -123,7 +126,10 @@ export default {
   data: function () {
     return {
       burgers: burgerArray,
-      sandwich: "macka",
+      fullName: "",
+      email: "",
+      streetName: "",
+
     };
   },
   methods: {
