@@ -8,6 +8,9 @@
      <span v-if="burger.gluten == true"> <li> <span class="allergies"> Contains gluten </span> </li> </span>
      <span v-if="burger.gluten == false && burger.lactose == false"> <li> Does not contain allergenics </li> </span>
    </ul>
+   <p>Amount ordered: {{amountOrdered}}</p>
+   <button type="button" id="amountButtons">-</button>
+   <button type="button" id="amountButtons">+</button>
   </div>
 
 </template>
@@ -18,7 +21,12 @@ export default {
   props: {
     burger: Object,
   },
-};
+  data: function() {
+    return {
+      amountOrdered: 0,
+    }
+  },
+};  
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

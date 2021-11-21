@@ -54,8 +54,8 @@
         <label for="House number">House</label><br />
         <input
           type="number"
-          id="number"
-          name="number"
+          id="housenumber"
+          v-model="houseNumber"
           required="required"
           placeholder="House number"
         />
@@ -99,7 +99,7 @@
       </div>
     </section>
   </section>
-  <button type="submit" class="submitbutton">
+  <button v-on:click="submitted" type="submit" class="submitbutton">
             Place order
         </button>
     </main>
@@ -129,10 +129,14 @@ export default {
       fullName: "",
       email: "",
       streetName: "",
-
+      houseNumber: ""
     };
   },
   methods: {
+    submitted: function() {
+       console.log(this.fullName,this.email,this.streetName,this.houseNumber)
+    },
+
     getOrderNumber: function () {
       return Math.floor(Math.random() * 100000);
     },
