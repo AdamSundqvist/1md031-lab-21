@@ -1,110 +1,116 @@
 <template>
-<main>
-  <section id="burgersection">
-    <h3>Burger selection</h3>
-    <p>This will be the burger selection area</p>
-    <div class="wrapper">
-      <Burger
-        v-for="burger in burgers"
-        v-bind:burger="burger"
-        v-bind:key="burger.name"
-      />
-    </div>
-  </section>
-  <section style="clear: left" id="customerinfosection">
-    <section id="contact">
-      <h3>Customer Information</h3>
-      <p>Content</p>
-    </section>
-    <section id="contact">
-      <h4>Delivery information</h4>
-      <p>
-        <label for="Full name">Full name</label><br />
-        <input
-          type="text"
-          id="Full name"
-          v-model="fullName"
-          required="required"
-          placeholder="First and Last name"
+  <main>
+    <section id="burgersection">
+      <h3>Burger selection</h3>
+      <p>This will be the burger selection area</p>
+      <div class="wrapper">
+        <Burger
+          v-for="burger in burgers"
+          v-bind:burger="burger"
+          v-bind:key="burger.name"
+          v-on:orderedBurger="addToOrder($event)"
         />
-        {{fullName}}
-      </p>
-      <p>
-        <label for="E-mail">Email</label><br />
-        <input
-          type="email"
-          id="Email"
-          v-model="email"
-          placeholder="Enter your email"
-        />
-        {{email}}
-      </p>
-      <p>
-        <label for="Street name">Street</label><br />
-        <input
-          type="adress"
-          id="adress"
-          v-model="streetName"
-          required="required"
-          placeholder="Street name"
-        />
-        {{streetName}}
-      </p>
-      <p>
-        <label for="House number">House</label><br />
-        <input
-          type="number"
-          id="housenumber"
-          v-model="houseNumber"
-          required="required"
-          placeholder="House number"
-        />
-      </p>
-    </section>
-    <section id="contact">
-      <h4>Payment method</h4>
-      <be>
-        <select id="Payment" name="Payment">
-          <option>Visa/Mastercard</option>
-          <option>Klarna checkout</option>
-          <option>Swish</option>
-          <option>PayPal</option>
-          <option selected="selected">Send cash with mail-pidgeon</option>
-        </select>
-      </be>
-    </section>
-    <section id="contact">
-      <h4>Gender</h4>
-      <div>
-        <input
-          type="radio"
-          id="undisclosured"
-          name="gender"
-          value="undisclosured"
-          checked
-        />
-        <label for="Undisclosured">Undisclosured</label>
-      </div>
-      <div>
-        <input type="radio" id="Female" name="gender" value="Female" />
-        <label for="Female">Female</label>
-      </div>
-      <div>
-        <input type="radio" id="Male" name="gender" value="Male" />
-        <label for="Male">Male</label>
-      </div>
-      <div>
-        <input type="radio" id="Non-binary" name="gender" value="Non-binary" />
-        <label for="Non-binary">Non-binary</label>
       </div>
     </section>
-  </section>
-  <button v-on:click="submitted" type="submit" class="submitbutton">
-            Place order
-        </button>
-    </main>
+    <section style="clear: left" id="customerinfosection">
+      <section id="contact">
+        <h3>Customer Information</h3>
+        <p>Content</p>
+      </section>
+      <section id="contact">
+        <h4>Delivery information</h4>
+        <p>
+          <label for="Full name">Full name</label><br />
+          <input
+            type="text"
+            id="Full name"
+            v-model="fullName"
+            required="required"
+            placeholder="First and Last name"
+          />
+          {{ fullName }}
+        </p>
+        <p>
+          <label for="E-mail">Email</label><br />
+          <input
+            type="email"
+            id="Email"
+            v-model="email"
+            placeholder="Enter your email"
+          />
+          {{ email }}
+        </p>
+        <p>
+          <label for="Street name">Street</label><br />
+          <input
+            type="adress"
+            id="adress"
+            v-model="streetName"
+            required="required"
+            placeholder="Street name"
+          />
+          {{ streetName }}
+        </p>
+        <p>
+          <label for="House number">House</label><br />
+          <input
+            type="number"
+            id="housenumber"
+            v-model="houseNumber"
+            required="required"
+            placeholder="House number"
+          />
+        </p>
+      </section>
+      <section id="contact">
+        <h4>Payment method</h4>
+        <be>
+          <select id="Payment" name="Payment">
+            <option>Visa/Mastercard</option>
+            <option>Klarna checkout</option>
+            <option>Swish</option>
+            <option>PayPal</option>
+            <option selected="selected">Send cash with mail-pidgeon</option>
+          </select>
+        </be>
+      </section>
+      <section id="contact">
+        <h4>Gender</h4>
+        <div>
+          <input
+            type="radio"
+            id="undisclosured"
+            name="gender"
+            value="undisclosured"
+            checked
+          />
+          <label for="Undisclosured">Undisclosured</label>
+        </div>
+        <div>
+          <input type="radio" id="Female" name="gender" value="Female" />
+          <label for="Female">Female</label>
+        </div>
+        <div>
+          <input type="radio" id="Male" name="gender" value="Male" />
+          <label for="Male">Male</label>
+        </div>
+        <div>
+          <input
+            type="radio"
+            id="Non-binary"
+            name="gender"
+            value="Non-binary"
+          />
+          <label for="Non-binary">Non-binary</label>
+        </div>
+      </section>
+    </section>
+    <button v-on:click="submitted" type="submit" class="submitbutton">
+      Place order
+    </button>
+  </main>
 
-  <!-- <div id="map" v-on:click="addOrder">click here</div> -->
+  <div id="map" v-on:click="addOrder">click here</div>
 </template>
 
 <script>
@@ -129,14 +135,17 @@ export default {
       fullName: "",
       email: "",
       streetName: "",
-      houseNumber: ""
+      houseNumber: "",
+      orderedBurger: {}
     };
   },
   methods: {
-    submitted: function() {
-       console.log(this.fullName,this.email,this.streetName,this.houseNumber)
+    submitted: function () {
+      console.log(this.fullName, this.email, this.streetName, this.houseNumber,this.orderedBurger); //eventuellt hs this["orderedBurger"]
     },
-
+    addToOrder: function (event) {
+      this.orderedBurger[event.name] = event.amount;
+    },
     getOrderNumber: function () {
       return Math.floor(Math.random() * 100000);
     },
