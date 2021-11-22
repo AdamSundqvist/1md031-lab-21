@@ -1,4 +1,8 @@
 <template>
+  <header id="Header">
+    <h1>Adams Premium Burgers Online</h1>
+  </header>
+  <body>
   <main>
     <section id="burgersection">
       <h3>Burger selection</h3>
@@ -15,7 +19,7 @@
     <section style="clear: left" id="customerinfosection">
       <section id="contact">
         <h3>Customer Information</h3>
-        <p>Content</p>
+        <p>This is where you provide your information</p>
       </section>
       <section id="contact">
         <h4>Delivery information</h4>
@@ -49,15 +53,20 @@
             <option>Klarna checkout</option>
             <option>Swish</option>
             <option>PayPal</option>
-            <option selected="selected">Send cash with mail-pidgeon</option>
+            <option>Send cash with mail-pidgeon</option>
           </select>
         </be>
       </section>
       <section id="contact">
         <h4>Gender</h4>
         <div>
-          <input type="radio" id="Undisclosured" v-model="gender" value="Undisclosured"/>
-          <label for="Undisclosured">Undisclosured</label>
+          <input
+            type="radio"
+            id="Undisclosed"
+            v-model="gender"
+            value="Undisclosed"
+          />
+          <label for="Undisclosed">Undisclosed</label>
         </div>
         <div>
           <input type="radio" id="Female" v-model="gender" value="Female" />
@@ -68,7 +77,12 @@
           <label for="Male">Male</label>
         </div>
         <div>
-          <input type="radio" id="Non-binary" v-model="gender" value="Non-binary"/>
+          <input
+            type="radio"
+            id="Non-binary"
+            v-model="gender"
+            value="Non-binary"
+          />
           <label for="Non-binary">Non-binary</label>
         </div>
       </section>
@@ -77,6 +91,7 @@
       Place order
     </button>
   </main>
+  </body>
   <section id="mapWrapper">
     <div v-on:click="pinLocation" id="theMap">
       <div
@@ -87,6 +102,12 @@
       </div>
     </div>
   </section>
+  <hr>
+    <footer>
+        COPYRIGHT &copy;
+        <br>
+        If you are impressed by this webdesign and want to hire me contact me at "adamsundqvist22@gmail.com"
+    </footer>
 </template>
 
 <script>
@@ -106,15 +127,15 @@ export default {
       burgers: burgerArray,
       fullName: "",
       email: "",
-      payment: "",
-      gender: 'Undisclosured',
+      payment: "Swish",
+      gender: "Undisclosed",
       orderedBurgers: {},
       location: { x: 0, y: 0 },
     };
   },
   methods: {
     addToOrder: function (event) {
-      console.log(event.name,event.amount)
+      console.log(event.name, event.amount);
       this.orderedBurgers[event.name] = event.amount;
     },
     getOrderNumber: function () {
