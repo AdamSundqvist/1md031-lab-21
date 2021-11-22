@@ -84,7 +84,7 @@
         </div>
       </section>
     </section>
-    <button v-on:click="submitted" type="submit" class="submitbutton">
+    <button v-on:click="addOrder" type="submit" class="submitbutton">
       Place order
     </button>
   </main>
