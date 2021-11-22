@@ -14,13 +14,16 @@
         <li>Does not contain allergenics</li>
       </span>
     </ul>
-    <p>Amount : {{ amountOrdered }}</p>
-    <button v-on:click="amountOrdered -= 1" type="button" id="amountButtons">
-      -
-    </button>
-    <button v-on:click="amountOrdered += 1" type="button" id="amountButtons">
-      +
-    </button>
+    <p>
+      Amount :
+      <button v-on:click="amountOrdered -= 1" type="button" id="amountButtons">
+        -
+      </button>
+      {{ amountOrdered }}
+      <button v-on:click="amountOrdered += 1" type="button" id="amountButtons">
+        +
+      </button>
+    </p>
   </div>
 </template>
 
@@ -42,7 +45,7 @@ export default {
         name: this.burger.name,
         amount: this.amountOrdered,
       });
-    }
+    },
   },
 };
 </script>
@@ -62,9 +65,10 @@ export default {
 #amountButtons {
   border: 2px solid lightgrey;
   background-color: #fff;
-  font-size: 10px;
-  height: 2.5em;
-  width: 2.5em;
+  font-size: 15px;
+  font: bold;
+  height: 2em;
+  width: 2em;
   border-radius: 999px;
   position: relative;
   margin: 5px;

@@ -109,21 +109,26 @@
       Place order
     </button>
   </main>
-
-  <div id="map" v-on:click="addOrder">click here</div>
+  <section id="mapwrapper">
+    <div
+      v-on:click="addOrder"
+      v-bind:style="{
+        left: location.x + 'px',
+        top: location.y + 'px',
+      }"
+    >
+      T
+    </div>
+  </section>
 </template>
 
 <script>
 import Burger from "../components/Burger.vue";
 import io from "socket.io-client";
 import menu from "../assets/menu.json";
-
 const socket = io();
-
 const burgerArray = menu;
-
 console.log(burgerArray);
-
 export default {
   name: "Home",
   components: {
@@ -136,12 +141,19 @@ export default {
       email: "",
       streetName: "",
       houseNumber: "",
-      orderedBurger: {}
+      orderedBurger: {},
+      location: { x: 0, y: 0 },
     };
   },
   methods: {
     submitted: function () {
-      console.log(this.fullName, this.email, this.streetName, this.houseNumber,this.orderedBurger); //eventuellt hs this["orderedBurger"]
+      console.log(
+        this.fullName,
+        this.email,
+        this.streetName,
+        this.houseNumber,
+        this.orderedBurger
+      ); //eventuellt hs this["orderedBurger"]
     },
     addToOrder: function (event) {
       this.orderedBurger[event.name] = event.amount;
@@ -180,7 +192,6 @@ export default {
   -webkit-text-stroke-color: white;
   margin-bottom: 5px;
 }
-
 #burgersection {
   color: white;
   background-color: black;
@@ -189,17 +200,14 @@ export default {
   margin-bottom: 5px;
   padding: 5px;
 }
-
 .wrapper {
   display: grid;
   grid-gap: 10px;
   grid-template-columns: repeat(3, 1fr);
 }
-
 #customerinfosection {
   border: dashed;
 }
-
 .submitbutton {
   font-size: 20px;
   padding: 10px 15px;
@@ -217,21 +225,34 @@ export default {
 .submitbutton:hover {
   background-color: #3e8e41;
 }
-
 .submitbutton:active {
   background-color: #3e8e41;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
-
 #contact {
   margin-left: 10px;
   margin-bottom: 10px;
 }
-
-#map {
-  width: 300px;
-  height: 300px;
-  background-color: red;
+#mapwrapper {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  background: url(/img/polacks.jpg);
+  background-repeat: no-repeat;
+  width:1920px;
+  height: 1078px;
+  cursor: crosshair;
+  overflow: scroll;
+}
+#mapwrapper div {
+  position: absolute;
+  background: black;
+  color: white;
+  border-radius: 10px;
+  width: 20px;
+  height: 20px;
+  text-align: center;
 }
 </style>
+
