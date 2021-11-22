@@ -109,15 +109,14 @@
       Place order
     </button>
   </main>
-  <section id="mapwrapper">
-    <div
-      v-on:click="addOrder"
-      v-bind:style="{
-        left: location.x + 'px',
-        top: location.y + 'px',
-      }"
-    >
-      T
+  <section id="mapWrapper">
+    <div v-on:click="pinLocation" id="theMap">
+      <div
+        v-bind:style="{ left: location.x + 'px', top: location.y + 'px' }"
+        id="placedDot"
+      >
+        T
+      </div>
     </div>
   </section>
 </template>
@@ -161,16 +160,22 @@ export default {
     getOrderNumber: function () {
       return Math.floor(Math.random() * 100000);
     },
-    addOrder: function (event) {
-      var offset = {
+
+    pinLocation: function (event) {
+      let offset = {
         x: event.currentTarget.getBoundingClientRect().left,
-        y: event.currentTarget.getBoundingClientRect().top, //offset är ett objekt och x och y är keyvaluepairs
+        y: event.currentTarget.getBoundingClientRect().top,
       };
+      this.location.x = event.clientX - 10 - offset.x;
+      this.location.y = event.clientY - 10 - offset.y;
+    },
+
+    addOrder: function () {
       socket.emit("addOrder", {
         orderId: this.getOrderNumber(),
         details: {
-          x: event.clientX - 10 - offset.x,
-          y: event.clientY - 10 - offset.y,
+          x: this.location.x,
+          y: this.location.y,
         },
         orderItems: ["Beans", "Curry"], //hela details är ett objekt som skickas
       });
@@ -234,18 +239,19 @@ export default {
   margin-left: 10px;
   margin-bottom: 10px;
 }
-#mapwrapper {
+#mapWrapper {
+  width: 1000px;
+  height: 500px;
   position: relative;
-  margin: 0;
-  padding: 0;
-  background: url(/img/polacks.jpg);
-  background-repeat: no-repeat;
-  width:1920px;
-  height: 1078px;
-  cursor: crosshair;
   overflow: scroll;
 }
-#mapwrapper div {
+#theMap {
+  width: 1920px;
+  height: 1078px;
+  background: url(/img/polacks.jpg);
+  cursor: crosshair;
+}
+#placedDot {
   position: absolute;
   background: black;
   color: white;
