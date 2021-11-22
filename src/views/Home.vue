@@ -40,27 +40,6 @@
           />
           {{ email }}
         </p>
-        <p>
-          <label for="Street name">Street</label><br />
-          <input
-            type="adress"
-            id="adress"
-            v-model="streetName"
-            required="required"
-            placeholder="Street name"
-          />
-          {{ streetName }}
-        </p>
-        <p>
-          <label for="House number">House</label><br />
-          <input
-            type="number"
-            id="housenumber"
-            v-model="houseNumber"
-            required="required"
-            placeholder="House number"
-          />
-        </p>
       </section>
       <section id="contact">
         <h4>Payment method</h4>
@@ -138,8 +117,6 @@ export default {
       burgers: burgerArray,
       fullName: "",
       email: "",
-      streetName: "",
-      houseNumber: "",
       orderedBurger: {},
       location: { x: 0, y: 0 },
     };
@@ -149,8 +126,6 @@ export default {
       console.log(
         this.fullName,
         this.email,
-        this.streetName,
-        this.houseNumber,
         this.orderedBurger
       ); //eventuellt hs this["orderedBurger"]
     },
