@@ -22,8 +22,8 @@
         <p>
           <label for="Full name">Full name</label><br />
           <input
-            type="text"
-            id="Full name"
+            type="name"
+            id="name"
             v-model="fullName"
             required="required"
             placeholder="First and Last name"
@@ -44,7 +44,7 @@
       <section id="contact">
         <h4>Payment method</h4>
         <be>
-          <select id="Payment" name="Payment">
+          <select id="payment" v-model="payment">
             <option>Visa/Mastercard</option>
             <option>Klarna checkout</option>
             <option>Swish</option>
@@ -56,30 +56,19 @@
       <section id="contact">
         <h4>Gender</h4>
         <div>
-          <input
-            type="radio"
-            id="undisclosured"
-            name="gender"
-            value="undisclosured"
-            checked
-          />
+          <input type="radio" id="Undisclosured" v-model="gender" value="Undisclosured"/>
           <label for="Undisclosured">Undisclosured</label>
         </div>
         <div>
-          <input type="radio" id="Female" name="gender" value="Female" />
+          <input type="radio" id="Female" v-model="gender" value="Female" />
           <label for="Female">Female</label>
         </div>
         <div>
-          <input type="radio" id="Male" name="gender" value="Male" />
+          <input type="radio" id="Male" v-model="gender" value="Male" />
           <label for="Male">Male</label>
         </div>
         <div>
-          <input
-            type="radio"
-            id="Non-binary"
-            name="gender"
-            value="Non-binary"
-          />
+          <input type="radio" id="Non-binary" v-model="gender" value="Non-binary"/>
           <label for="Non-binary">Non-binary</label>
         </div>
       </section>
@@ -117,20 +106,16 @@ export default {
       burgers: burgerArray,
       fullName: "",
       email: "",
-      orderedBurger: {},
+      payment: "",
+      gender: 'Undisclosured',
+      orderedBurgers: {},
       location: { x: 0, y: 0 },
     };
   },
   methods: {
-    submitted: function () {
-      console.log(
-        this.fullName,
-        this.email,
-        this.orderedBurger
-      ); //eventuellt hs this["orderedBurger"]
-    },
     addToOrder: function (event) {
-      this.orderedBurger[event.name] = event.amount;
+      console.log(event.name,event.amount)
+      this.orderedBurgers[event.name] = event.amount;
     },
     getOrderNumber: function () {
       return Math.floor(Math.random() * 100000);
@@ -148,11 +133,17 @@ export default {
     addOrder: function () {
       socket.emit("addOrder", {
         orderId: this.getOrderNumber(),
+        customerinfo: {
+          name: this.fullName,
+          email: this.email,
+          payment: this.payment,
+          gender: this.gender,
+        },
         details: {
           x: this.location.x,
           y: this.location.y,
         },
-        orderItems: ["Beans", "Curry"], //hela details är ett objekt som skickas
+        orderItems: this.orderedBurgers,
       });
     },
   },

@@ -16,11 +16,11 @@
     </ul>
     <p>
       Amount :
-      <button v-on:click="amountOrdered -= 1" type="button" id="amountButtons">
+      <button v-on:click="minusOne" type="button" id="amountButtons">
         -
       </button>
       {{ amountOrdered }}
-      <button v-on:click="amountOrdered += 1" type="button" id="amountButtons">
+      <button v-on:click="plusOne" type="button" id="amountButtons">
         +
       </button>
     </p>
@@ -39,13 +39,20 @@ export default {
     };
   },
   methods: {
-    addBurger: function () {
-      this.amountOrdered += 1;
+    plusOne: function () {
+      this.amountOrdered = this.amountOrdered + 1;
       this.$emit("orderedBurger", {
         name: this.burger.name,
         amount: this.amountOrdered,
       });
     },
+    minusOne: function () {
+      this.amountOrdered = this.amountOrdered -1;
+      this.$emit("orderedBurger", {
+        name: this.burger.name,
+        amount: this.amountOrdered,
+      });
+    }
   },
 };
 </script>
